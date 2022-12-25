@@ -19,6 +19,7 @@ const SignupForm = ({ className }) => {
     const { signup } = useAuth();
     const history = useHistory();
 
+    console.log(userName);
     // eslint-disable-next-line consistent-return
     async function handleSubmit(e) {
         e.preventDefault();

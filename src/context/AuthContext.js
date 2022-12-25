@@ -3,7 +3,8 @@ import {
     getAuth,
     onAuthStateChanged,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    updateProfile
 } from 'firebase/auth';
 
 import React, { useContext, useEffect, useState } from 'react';
@@ -33,10 +34,10 @@ export function AuthProvider({ children }) {
     async function signup(email, password, username) {
         const auth = getAuth();
         await createUserWithEmailAndPassword(auth, email, password);
+        console.log(username);
 
         // update profile
-        await (auth.currentUser,
-        {
+        await updateProfile(auth.currentUser, {
             displayName: username
         });
 
