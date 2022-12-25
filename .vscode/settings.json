@@ -1,6 +1,7 @@
 {
   // config related to code formatting
-  "editor.fontSize": 20,
+  "editor.fontSize": 18,
+  "editor.fontWeight": "normal",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "[javascript]": {
