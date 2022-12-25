@@ -1,17 +1,14 @@
-import image from '../asset/3.jpg';
 import classes from '../styles/Video.module.css';
 
-const Video = () => (
-    <a href="quiz.html">
-        <div className={classes.video}>
-            <img src={image} alt="" />
-            <p>#23 React Hooks Bangla - React useReducer hook Bangla</p>
-            <div className={classes.qmeta}>
-                <p>10 Questions</p>
-                <p>Score : Not taken yet</p>
-            </div>
+const Video = ({ title, noq, id }) => (
+    <div className={classes.video}>
+        <img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`} alt="" />
+        <p>{title}</p>
+        <div className={classes.qmeta}>
+            <p>{noq} Questions</p>
+            <p>Total Score : {noq * 5}</p>
         </div>
-    </a>
+    </div>
 );
 
 export default Video;

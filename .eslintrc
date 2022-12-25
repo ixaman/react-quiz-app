@@ -21,6 +21,9 @@
     "jest": true
   },
   "rules": {
+    "no-unused-vars": 1,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/jsx-props-no-spreading": 0,
     "jsx-a11y/mouse-events-have-key-events": 0,
     "react/jsx-no-bind": 0,
     "react/react-in-jsx-scope": 0,
@@ -40,7 +43,7 @@
     "prettier/prettier": [
       "error",
       {
-        "trailingComma": "es5",
+        "trailingComma": "none",
         "singleQuote": true,
         "printWidth": 100,
         "tabWidth": 4,

@@ -1,5 +1,5 @@
-import Video from '../Videos';
+import Videos from '../Videos';
 
-const Home = () => <Video />;
+const Home = () => <Videos />;
 
 export default Home;

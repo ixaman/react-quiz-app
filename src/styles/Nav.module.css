@@ -1,10 +1,12 @@
 .nav {
+  /* background-color: #fff; */
   display: flex;
   background-color: #fff;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
+  /* #e5e5e5 */
   border-bottom: 1px solid #e5e5e5;
   z-index: 1;
 }
