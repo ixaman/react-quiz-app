@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Button from './Button';
 import Checkbox from './Checkbox';
@@ -17,7 +17,7 @@ const SignupForm = ({ className }) => {
     const [loading, setLoading] = useState();
 
     const { signup } = useAuth();
-    const history = useHistory();
+    const history = useNavigate();
 
     console.log(userName);
     // eslint-disable-next-line consistent-return

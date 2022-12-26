@@ -2,7 +2,7 @@ import { getDatabase, ref, set } from 'firebase/database';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import _ from 'lodash';
 import { useEffect, useReducer, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import useQuiz from '../../hooks/useQuiz';
 import Answers from '../Answers';
@@ -38,11 +38,11 @@ const Quiz = () => {
     const [qna, dispatch] = useReducer(reducer, initialState);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const { currentUser } = useAuth();
-    const history = useHistory();
+    const navigate = useNavigate();
 
-    const { location } = history;
-    const { state } = location;
-    const { videoTitle } = state;
+    const location = useLocation();
+    console.log(location);
+    const videoTitle = location.state?.videoTitle;
 
     useEffect(() => {
         dispatch({
@@ -85,14 +85,8 @@ const Quiz = () => {
         });
 
         // relocate to new path
-        history.push({
-            pathname: `/result/${id}`,
-            state: {
-                qna
-            }
-        });
+        navigate(`/result/${id}`, { state: { qna } });
     }
-
     return (
         <>
             {loading && <div> Loading...</div>}

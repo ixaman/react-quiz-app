@@ -1,13 +1,9 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-function PublicRoute({ component: Component, ...rest }) {
+function PublicRoutes() {
     const { currentUser } = useAuth();
 
-    return !currentUser ? (
-        <Route {...rest}>{(props) => <Component {...props} />}</Route>
-    ) : (
-        <Redirect to="/" />
-    );
+    return !currentUser ? <Outlet /> : <Navigate to="/" />;
 }
-export default PublicRoute;
+export default PublicRoutes;

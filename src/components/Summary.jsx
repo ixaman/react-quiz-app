@@ -33,7 +33,7 @@ const Summary = ({ score, noq }) => {
                     {score} out of {noq * 5}
                 </p>
             </div>
-            {loading && <div className={classes.badge}> Loading... </div>}
+            {loading && <div className={classes.badge}> Loading your badge... </div>}
             {error && <div className={classes.badge}> There was an error ! </div>}
             {!loading && !error && (
                 <div className={classes.badge}>

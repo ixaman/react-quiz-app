@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Quiz from './components/pages/Quiz';
 import Result from './components/pages/Result';
 import Signup from './components/pages/Signup';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+import PrivateRoutes from './components/PrivateRoute';
+import PublicRoutes from './components/PublicRoute';
 import { AuthProvider } from './context/AuthContext';
 import './styles/app.css';
 
@@ -15,13 +15,17 @@ function App() {
         <Router>
             <AuthProvider>
                 <Layout>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <PublicRoute exact path="/signup" component={Signup} />
-                        <PublicRoute exact path="/login" component={Login} />
-                        <PrivateRoute exact path="/quiz/:id" component={Quiz} />
-                        <PrivateRoute exact path="/result/:id" component={Result} />
-                    </Switch>
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        <Route element={<PublicRoutes />}>
+                            <Route path="/signup" element={<Signup />} />
+                            <Route path="/login" element={<Login />} />
+                        </Route>
+                        <Route element={<PrivateRoutes />}>
+                            <Route path="/quiz/:id" element={<Quiz />} />
+                            <Route path="/result/:id" element={<Result />} />
+                        </Route>
+                    </Routes>
                 </Layout>
             </AuthProvider>
         </Router>

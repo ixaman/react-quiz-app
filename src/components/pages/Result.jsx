@@ -1,14 +1,13 @@
 import { isEqual } from 'lodash';
-import { useHistory, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import useAnswers from '../../hooks/useAnswers';
 import Analysis from '../Analysis';
 import Summary from '../Summary';
 
 const Result = () => {
     const { id } = useParams();
-    const { location } = useHistory();
+    const location = useLocation();
     const { state } = location;
-    // eslint-disable-next-line no-unused-vars
     const { qna } = state;
     const { loading, error, answers } = useAnswers(id);
 

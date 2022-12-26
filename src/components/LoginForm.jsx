@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Button from './Button';
 import Form from './Form';
@@ -11,7 +11,11 @@ const LoginForm = () => {
     const [error, setError] = useState();
 
     const { login } = useAuth();
-    const history = useHistory();
+    const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -19,7 +23,7 @@ const LoginForm = () => {
         try {
             setError('');
             await login(email, password);
-            history.push('/');
+            navigate(from, { replace: true });
         } catch (err) {
             setError(err.message);
         }
